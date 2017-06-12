@@ -1,0 +1,315 @@
+{include file="public/meta" /}
+<style type="text/css">
+    #waitingcontainer{
+        background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+</style>
+
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group" id="openxiaolian">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page page-current">
+            <!-- 标题栏 -->
+             <header class="bar bar-nav">
+                <a class="icon icon-me pull-left open-panel"></a>
+                <a class="pull-right" href="#router7" style="padding: .5rem 0;">
+                        <svg aria-hidden="true" class="iconfont" style="width: 1.2rem;height: 1.2rem;
+                ">
+                            <use xlink:href="#icon-add">
+                            </use>
+                        </svg>
+                    </a>
+                <!-- 下面是标签页 -->
+                <div class="content-block" id="activity-title">
+                       社团活动
+                </div>
+                <!--  -->
+            </header>
+            <!-- 工具栏 -->
+            <div class="content">
+                <div class="buttons-tab">
+                        <a href="#tab1" class="tab-link active button">正在进行</a>
+                        <a href="#tab2" class="tab-link button">蓄势待发</a>
+                </div>
+                <div class="tabs">
+               <div id="tab1" class="tab active">
+                                <!-- 列表 -->
+                                {volist name="activity" id="vo"}
+                                <div class="list-block" id="zg-card">
+                                    <ul>
+                                        <a href="#activity{$vo.activity_id}" class="item-link item-content" style='height:13rem;'>
+                                            <div style="width:5rem; height:13rem;">
+                                                <img src="{$vo.activity_image}" style='width: 5rem; height:6rem' id="zg-img">
+                                            </div>
+                                            <div style="width:12.5rem; height:12rem;" id="zg-r">
+                                                <span id="zg-biaoti">{$vo.activity_name}</span>
+                                                <br/>
+                                                <span id="zg-biaotis">社团：{$vo.community_name}</span>
+                                                <br/>
+                                                <span id="zg-biaotis">地点：{$vo.activity_location}</span>
+                                                <br/>
+                                                <span id="zg-biaotis">时间：{$vo.activity_starttime}-{$vo.activity_endtime}</span>
+                                                <div id="zg-beijing">
+                                                    <div id="zg-center">{$vo.activity_abstract}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </ul>
+                                </div>
+                                {/volist}
+                            </div>
+               <div id="tab2" class="tab">
+                               <!-- 列表 -->
+                                {volist name="activitystandby" id="vo"}
+                                <div class="list-block" id="zg-card">
+                                    <ul>
+                                        <a href="#activity{$vo.activity_id}" class="item-link item-content" style='height:13rem;'>
+                                            <div style="width:5rem; height:13rem;">
+                                                <img src="{$vo.activity_image}" style='width: 5rem; height:6rem' id="zg-img">
+                                            </div>
+                                            <div style="width:12.5rem; height:12rem;" id="zg-r">
+                                                <span id="zg-biaoti">{$vo.activity_name}</span>
+                                                <br/>
+                                                <span id="zg-biaotis">社团：{$vo.community_name}</span>
+                                                <br/>
+                                                <span id="zg-biaotis">地点：{$vo.activity_location}</span>
+                                                <br/>
+                                                <span id="zg-biaotis">时间：{$vo.activity_starttime}-{$vo.activity_endtime}</span>
+                                                <div id="zg-beijing">
+                                                    <div id="zg-center">{$vo.activity_abstract}</div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </ul>
+                                </div>
+                                {/volist}
+                            </div>
+                            </div>
+                        </div>
+            
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="{:url('index/news')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-xinwen">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        新闻
+                    </span>
+                </a>
+                <a class="tab-item external active" href="{:url('index/activity')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-huodong">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        活动
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/community')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-shetuan">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        社团
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/service')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-fuwu">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        服务
+                    </span>
+                </a>
+            </nav>
+        </div>
+        {volist name="activity" id="vo"}
+         <div class="page " id='activity{$vo.activity_id}'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                    <span class="icon icon-left"></span> 返回
+                </a>
+                <h1 class='title'>活动详情</h1>
+            </header>
+            <div class="content">
+            <div id="zg1-beijing1" align="center">
+                <img src="{$vo.activity_image}" id="zg1-image" >
+            </div>
+            
+            <div id="zg-introduce" >
+                <span id="zg1-biaoti">{$vo.activity_name}</span>
+                <br/>
+                <span id="zg1-fbiaoti">活动时间&nbsp; &nbsp;&nbsp;{$vo.activity_starttime}-{$vo.activity_endtime}</span>
+                <br/>
+                <span id="zg1-fbiaoti">活动地点&nbsp; &nbsp;&nbsp;{$vo.activity_location}</span>
+                <br/>
+                <span id="zg1-fbiaoti">活动负责&nbsp; &nbsp;&nbsp;{$vo.community_name}</span>
+                <div id="zg1-beijing2">
+                    <span id="zg1-fbiaoti">活动介绍</span>
+                    <br/>
+                    <div id="zg1-fbiaoti2">{$vo.editorValue}
+                    </div>
+                </div>
+               
+            </div>
+            <div class="content-block">
+             <div class="row">
+             {if condition="$useraccount.registered_id"}
+             {if condition="$user.member_qq||$user.member_phonenum"}
+             <form action="{:url('index/joinactivity')}" method="post">
+             <input type="hidden" name="activity_id" value="{$vo.activity_id}">
+             <input type="hidden" name="registered_id" value="{$useraccount.registered_id}">
+
+<button type="submit" class="col-100 button button-big button-fill button-success">我要报名</button>
+      </form>
+      {else/}
+      <a href="{:url('index/alertperfect')}" class="col-100 button button-big button-fill button-success">我要报名</a>
+      {/if}
+      {else/}
+      <a href="{:url('index/alertlogin')}" class="col-100 button button-big button-fill button-success">我要报名</a>
+      {/if}
+    </div>
+    </div>
+            </div>
+
+    
+
+           
+        </div>
+         {/volist}
+          {volist name="activitystandby" id="vo"}
+         <div class="page " id='activity{$vo.activity_id}'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                    <span class="icon icon-left"></span> 返回
+                </a>
+                <h1 class='title'>活动详情</h1>
+            </header>
+            <div class="content">
+            <div id="zg1-beijing1" align="center">
+                <img src="{$vo.activity_image}" id="zg1-image" >
+            </div>
+            <div id="zg-introduce">
+                <span id="zg1-biaoti">{$vo.activity_name}</span>
+                <br/>
+                <span id="zg1-fbiaoti">活动时间&nbsp; &nbsp;&nbsp;{$vo.activity_starttime}-{$vo.activity_endtime}</span>
+                <br/>
+                <span id="zg1-fbiaoti">活动地点&nbsp; &nbsp;&nbsp;{$vo.activity_location}</span>
+                <br/>
+                <span id="zg1-fbiaoti">活动负责&nbsp; &nbsp;&nbsp;{$vo.community_name}</span>
+                <div id="zg1-beijing2">
+                    <span id="zg1-fbiaoti">活动介绍</span>
+                    <br/>
+                    <div id="zg1-fbiaoti2">{$vo.editorValue}
+                    </div>
+                </div>
+            </div>
+           </div>
+        </div>
+         {/volist}
+        <div class="page" id='router7'>
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="/docs-demos/router">
+                <span class="icon icon-left"></span>
+                 返回
+                </a>
+                <h1 class='title'>申请活动</h1>
+            </header>
+        {if condition="$useraccount.registered_id"}
+        {if condition="$user.root_id==2"}
+        
+        <div class="content" id="waitingcontainer">
+            <div align="center" id="wait">
+                <!--这是内容块  -->
+                <div id="wait-inside">
+                    <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                        <div calss="wait-line">
+                            尊敬的社长
+                        </div>
+                        <div class="wait-line">
+                             请前往系统后台<a href="{:url('admin/login/index')}">申请活动</a>
+                        </div>
+                        <div class="wait-line">
+                        用PC打开哦>.<
+                        </div>
+                    </img>
+                </div>
+            </div>
+        </div>
+        {elseif condition="$user.root_id==3"}
+        <div class="content" id="waitingcontainer">
+            <div align="center" id="wait">
+                <!--这是内容块  -->
+                <div id="wait-inside">
+                    <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                        <div calss="wait-line">
+                            尊敬的社联管理员
+                        </div>
+                        <div class="wait-line">
+                            请前往系统后台<a href="{:url('admin/login/index')}">申请活动</a>
+                        </div>
+                        <div class="wait-line">
+                        用PC打开哦>.<
+                        </div>
+                    </img>
+                </div>
+            </div>
+        </div>
+        {else/}
+         <div class="content" id="waitingcontainer">
+            <div align="center" id="wait">
+                <!--这是内容块  -->
+                <div id="wait-inside">
+                    <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                        <div calss="wait-line">
+                            您还没有权限发起活动
+                        </div>
+                        <div class="wait-line">
+                            成为社长或者社联管理员
+                        </div>
+                        <div class="wait-line">
+                        即可发起活动
+                        </div>
+                    </img>
+                </div>
+            </div>
+        </div>
+        {/if}
+        {else/}
+        <!-- 用户没有登录返回提示登录界面 -->
+        <div class="content" id="waitingcontainer">
+            <div align="center" id="wait">
+                <!--这是内容块  -->
+                <div id="wait-inside">
+                    <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                        <div calss="wait-line">
+                            您还没有登入
+                        </div>
+                        <div class="wait-line">
+                            点击<a href="{:url('index/login')}" class="external">登录</a>
+                        </div>
+                    </img>
+                </div>
+            </div>
+        </div>
+        {/if}
+    </div>
+        <!-- 其他的单个page内联页（如果有） -->
+    </div>
+    {include file="public/sidebar" /}
+
+{include file="public/footer" /}
+{include file="public/sidebarjs" /}
+</body>

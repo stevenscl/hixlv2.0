@@ -1,0 +1,72 @@
+<script>
+$("#sex").picker({
+  toolbarTemplate: '<header class="bar bar-nav">\
+  <button class="button button-link pull-left close-picker">取消</button>\
+  <button class="button button-link pull-right close-picker">确定</button>\
+  <h1 class="title">选择性别</h1>\
+  </header>',
+  cols: [
+    {
+      textAlign: 'center',
+      values: ['男','女']
+    }
+  ]
+});
+$("#major").picker({
+  toolbarTemplate: '<header class="bar bar-nav">\
+  <button class="button button-link pull-left close-picker">取消</button>\
+  <button class="button button-link pull-right close-picker">确定</button>\
+  <h1 class="title">选择专业</h1>\
+  </header>',
+  cols: [
+    {
+      textAlign: 'center',
+      values: ['通信工程','通信工程(嵌入式培养)','信息工程','计算机科学与技术','计算机科学与技术(嵌入式培养)','软件工程','软件工程(嵌入式培养)','网络工程','物联网工程','物联网工程(嵌入式培养)','数字媒体技术','电子科学与技术','光电信息科学与技术','自动化','电气工程及其自动化','金融工程','市场营销','物流管理','信息管理与信息系统','电子商务','广告学']
+    }
+  ]
+});
+$("#communitytype").picker({
+  toolbarTemplate: '<header class="bar bar-nav">\
+  <button class="button button-link pull-left close-picker">取消</button>\
+  <button class="button button-link pull-right close-picker">确定</button>\
+  <h1 class="title">选择类型</h1>\
+  </header>',
+  cols: [
+    {
+      textAlign: 'center',
+      values: ['文化体育类','学术科技类','创新创业类','互助自律类']
+    }
+  ]
+});
+$("#birth").calendar({
+    value: ['2017-4-19'],
+    dateFormat:'yy-mm-dd',
+});
+
+</script>
+<script type="text/javascript">
+    $(function() {
+    $('#signup-idimage1').uploadifive({
+        'auto' : true,
+        'uploadScript' : '/api/image/uploadifive',
+        'fileObjName' : 'file',
+        'buttonText' : '上传头像',
+        'queueID' : 'tip-queue1',
+        'fileType' : 'image/*',
+        'multi' : false,
+        'fileSizeLimit'   : 5242880,
+        'uploadLimit' : 3,
+        'queueSizeLimit'  : 1,   
+        'onUploadComplete' : function(file, data) {
+            var obj = JSON.parse(data);
+            $("#upload_img").attr("src",obj.data);
+            $("#file_upload_image").attr("value",obj.data);
+            $("#upload_img").show();
+        }
+    });
+});
+</script>
+<script src="__STATIC__INDEX/uploadifive/jquery.min.js" type="text/javascript">
+</script>
+<script src="__STATIC__INDEX/uploadifive/jquery.uploadifive.min.js" type="text/javascript">
+</script>

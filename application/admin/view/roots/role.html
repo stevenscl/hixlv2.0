@@ -1,0 +1,121 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>
+    角色管理
+</title>
+<body>
+    <nav class="breadcrumb">
+        <i class="Hui-iconfont">
+            
+        </i>
+        首页
+        <span class="c-gray en">
+            >
+        </span>
+        用户管理
+        <span class="c-gray en">
+            >
+        </span>
+        角色管理
+        <a class="btn btn-success radius r" href="javascript:location.replace(location.href);" style="line-height:1.6em;margin-top:3px" title="刷新">
+            <i class="Hui-iconfont">
+                
+            </i>
+        </a>
+    </nav>
+    <div class="page-container">
+        <div class="cl pd-5 bg-1 bk-gray">
+            <span class="l">
+                <a class="btn btn-primary radius" href="javascript:;" onclick="add('添加角色','{:url('roots/add')}','','300')">
+                    <i class="Hui-iconfont">
+                        
+                    </i>
+                    添加角色
+                </a>
+            </span>
+            <span class="r">
+                共有数据：
+                <strong>
+                    {$count}
+                </strong>
+                条
+            </span>
+        </div>
+        <div class="mt-20">
+        <table class="table table-border table-bordered table-hover table-bg table-sort">
+            <thead>
+                <tr>
+                    <th colspan="6" scope="col">
+                        角色管理
+                    </th>
+                </tr>
+                <tr class="text-c">
+                    <th width="25">
+                        <input name="root_id" type="checkbox" value="1">
+                        </input>
+                    </th>
+                    <th width="40">
+                        角色编号
+                    </th>
+                    <th width="200">
+                        角色名
+                    </th>
+                    <th width="70">
+                        操作
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                {volist name="role" id="vo"}
+                <tr class="text-c">
+                    <td>
+                        <input name="root_id" type="checkbox" value="{$vo.root_id}">
+                        </input>
+                    </td>
+                    <td>
+                        {$vo.root_id}
+                    </td>
+                    <td>
+                        {$vo.root_name}
+                    </td>
+                    <td class="f-14">
+                        <a href="javascript:;" onclick="edit('角色编辑','{:url('roots/edit',['id'=>$vo.root_id])}','','300')" style="text-decoration:none" title="编辑">
+                            <i class="Hui-iconfont">
+                                
+                            </i>
+                        </a>
+                        <a class="ml-5" href="javascript:;" onclick="del('{:url('roots/del',['id'=>$vo.root_id])}')" style="text-decoration:none" title="删除">
+                            <i class="Hui-iconfont">
+                                
+                            </i>
+                        </a>
+                    </td>
+                </tr>
+                {/volist}
+            </tbody>
+        </table>
+        </div>
+        </div>
+    </div>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+     <!--请在下方写此页面业务相关的脚本-->
+    <script src="__STATIC__ADMIN/hui/lib/datatables/1.10.0/jquery.dataTables.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        $('.table-sort').dataTable({
+        "aaSorting": [
+            [1, "desc"]
+        ], //默认第几个排序
+        "bStateSave": true, //状态保存
+        "aoColumnDefs": [
+            //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+            {
+                "orderable": false,
+                "aTargets": [0,2]
+            } // 不参与排序的列
+        ]
+    });
+    </script>
+</body>
+</html>

@@ -1,0 +1,104 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>会员管理-编辑角色</title>
+</head>
+
+<body>
+    <article class="page-container">
+        <form action="{:url('members/update')}" method="post" class="form form-horizontal" id="form-member-add">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    </span>昵称：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="{$member.member_name}" placeholder="" id="member_name" name="member_name">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    </span>性别：</label>
+                <div class="formControls col-xs-8 col-sm-9 skin-minimal">
+                    <div class="radio-box">
+                        <input name="member_sex" type="radio" id="sex-1" value="男" checked>
+                        <label for="sex-1">男</label>
+                    </div>
+                    <div class="radio-box">
+                        <input type="radio" id="sex-2" value="女" name="member_sex">
+                        <label for="sex-2">女</label>
+                    </div>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">专业：</label>
+                <div class="formControls col-xs-8 col-sm-9"> <span class="select-box">
+                <select name="member_major" class="select">
+                    <option value="通信工程">通信工程</option>
+                    <option value="通信工程(嵌入式培养)">通信工程(嵌入式培养)</option>
+                    <option value="信息工程">信息工程</option>
+                    <option value="计算机科学与技术">计算机科学与技术</option>
+                    <option value="计算机科学与技术(嵌入式培养)">计算机科学与技术(嵌入式培养)</option>
+                    <option value="软件工程">软件工程</option>
+                    <option value="软件工程(嵌入式培养)">软件工程(嵌入式培养)</option>
+                    <option value="网络工程">网络工程</option>
+                    <option value="物联网工程">物联网工程</option>
+                    <option value="物联网工程(嵌入式培养)">物联网工程(嵌入式培养)</option>
+                    <option value="数字媒体技术">数字媒体技术</option>
+                    <option value="电子科学与技术">电子科学与技术</option>
+                    <option value="光电信息科学与技术">光电信息科学与技术</option>
+                    <option value="自动化">自动化</option>
+                    <option value="电气工程及其自动化">电气工程及其自动化</option>
+                    <option value="金融工程">金融工程</option>
+                    <option value="市场营销">市场营销</option>
+                    <option value="物流管理">物流管理</option>
+                    <option value="信息管理与信息系统">信息管理与信息系统</option>
+                    <option value="电子商务">电子商务</option>
+                    <option value="广告学">广告学</option>
+                </select>
+                </span> </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">头像：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                <input id="signup-idimage1"  type="file" multiple="true" for="signup-idimage1">
+                <img  id="upload_img" src="{$member.member_avatar}" width="200" height="200">
+                <input id="file_upload_image" name="member_avatar" type="hidden" multiple="true" value="{$member.member_avatar}">
+                <div id="tip-queue1"></div>
+              </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    </span>手机：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="{$member.member_phonenum}" placeholder="" id="member_phonenum" name="member_phonenum">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    </span>QQ：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="{$member.member_qq}" placeholder="" id="member_qq" name="member_qq">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    </span>宿舍号：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="{$member.member_address}" placeholder="" id="member_address" name="member_address">
+                </div>
+            </div>
+            <div class="row cl">
+                <input name="registered_id" type="hidden" value="{$member.registered_id}">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-3">
+                    <input class="btn btn-primary radius" type="submit" value="&nbsp;&nbsp;确定&nbsp;&nbsp;">
+                    <button onClick="layer_close();" class="btn btn-default radius" type="button">&nbsp;&nbsp;取消&nbsp;&nbsp;</button>
+                </div>
+            </div>
+        </form>
+    </article>
+    
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--/_footer 作为公共模版分离出去-->
+    
+</body>
+
+</html>

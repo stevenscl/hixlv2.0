@@ -1,0 +1,183 @@
+{include file="public/meta" /}
+<style type="text/css">
+    #waitingcontainer{
+        background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+</style>
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group" id="openxiaolian">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page page-current">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav">
+                <a class="icon icon-me pull-left open-panel">
+                </a>
+                <h1 class="title">
+                    Hello 小联
+                </h1>
+            </header>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="{:url('index/news')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-xinwen">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        新闻
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/activity')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-huodong">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        活动
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/community')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-shetuan">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        社团
+                    </span>
+                </a>
+                <a class="tab-item external active" href="{:url('index/service')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-fuwu">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        服务
+                    </span>
+                </a>
+            </nav>
+            <!-- 这里是页面内容区 -->
+            <!-- 下面是内联组件 -->
+            <!-- content应该拥有"pull-to-refresh-content"类,表示启用下拉刷新 -->
+            <div class="content">
+                <a href="#service1">
+                    <div class="box">
+                    <img src="__STATIC__INDEX/img/logo.png" style="width: 3rem; height: 3rem; ">
+                    <p class="box-name">意见箱</p>
+                  </div>
+                </a>
+                <a href="http://wpa.qq.com/msgrd?v=3&uin=2193261037&site=qq&menu=yes" class="external">
+                    <div class="box">
+                    <img src="__STATIC__INDEX/img/logo.png" style="width: 3rem; height: 3rem; ">
+                    <p class="box-name">小联在线</p>
+                  </div>
+                </a>
+            </div>
+            <!-- 内容区内联组件-->
+            <!-- 这是content结束-->
+        </div>
+        <div class="page" id="service1">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="">
+                    <span class="icon icon-left">
+                    </span>
+                    返回
+                </a>
+                <h1 class="title">
+                    意见箱
+                </h1>
+            </header>
+            {if condition="$useraccount.registered_id"}
+            <form action="{:url('index/view')}" method="post">
+            <div class="content">
+                <div class="list-block">
+                    <div class="img">
+                        <img id="avatar" src="__STATIC__INDEX/img/logo.png">
+                        </img>
+                    </div>
+                    <ul>
+                        <!-- Switch (Checkbox) -->
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        匿名
+                                    </div>
+                                    <div class="item-input">
+                                        <label class="label-switch">
+                                            <input type="checkbox" name="noname">
+                                                <div class="checkbox">
+                                                </div>
+                                            </input>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="align-top">
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        意见/举报
+                                    </div>
+                                    <div class="item-input">
+                                        <textarea  style="height: 13rem;" name="msg_text">
+                                        </textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <div class="row">
+                        <div class="col-50">
+                            <a class="button button-big button-fill button-danger back">
+                                取消
+                            </a>
+                        </div>
+                           <button type="submit" class="col-50 button button-big button-fill button-success">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {else/}
+            <!-- 用户没有登录返回提示登录界面 -->
+            <div class="content" id="waitingcontainer">
+                <div align="center" id="wait">
+                    <!--这是内容块  -->
+                    <div id="wait-inside">
+                        <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                            <div calss="wait-line">
+                                您还没有登入
+                            </div>
+                            <div class="wait-line">
+                                点击
+                                <a class="external" href="{:url('index/login')}">
+                                    登录
+                                </a>
+                            </div>
+                        </img>
+                    </div>
+                </div>
+            </div>
+            </form>
+            {/if}
+        </div>
+        <!-- 下面是内联的页面 -->
+        <!-- 其他的单个page内联页（如果有） -->
+    </div>
+    {include file="public/sidebar" /}
+
+{include file="public/footer" /}
+
+{include file="public/sidebarjs" /}
+</body>

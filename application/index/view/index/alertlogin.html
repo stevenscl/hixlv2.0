@@ -1,0 +1,33 @@
+{include file="public/meta" /}
+<style type="text/css">
+    #waitingcontainer{
+        background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+</style>
+<body>
+<div class="page page-current" id='router'>
+ <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left external" href="{:url('index/activity')}">
+                    <span class="icon icon-left"></span> 返回
+                </a>
+                <h1 class='title'>系统消息</h1>
+            </header>
+ <div class="content" id="waitingcontainer">
+            <div align="center" id="wait">
+                <!--这是内容块  -->
+                <div id="wait-inside">
+                    <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                        <div calss="wait-line">
+                            您还没有登入
+                        </div>
+                        <div class="wait-line">
+                            点击<a href="{:url('index/login')}" class="external">登录</a>
+                        </div>
+                    </img>
+                </div>
+            </div>
+        </div>
+</div>
+
+{include file="public/footer" /}
+</body>

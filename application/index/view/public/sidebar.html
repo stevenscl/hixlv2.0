@@ -1,0 +1,294 @@
+<div class="page-group">
+    <div class="page" id="router3">
+        <form action="{:url('index/editinfo')}" method="post">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="">
+                    <span class="icon icon-left">
+                    </span>
+                    返回
+                </a>
+                <h1 class="title">
+                    个人信息
+                </h1>
+            </header>
+            <div class="content">
+                <div class="list-block">
+                    {if condition="$user"}
+                    <ul>
+                        <!-- Text inputs -->
+                        <li>
+                            <a class="item-link item-content" href="#router5">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        <div class="item-title">
+                                            头像
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        昵称
+                                    </div>
+                                    <div class="item-input">
+                                        <input name="member_name" placeholder="昵称" type="text" value="{$user.member_name}">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        性别
+                                    </div>
+                                    <div class="item-input">
+                                        <input id="sex" name="member_sex" type="text" value="{$user.member_sex}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        生日
+                                    </div>
+                                    <div class="item-input">
+                                        <input id="birth" name="member_birth" type="text" value="{$user.member_birth}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        专业
+                                    </div>
+                                    <div class="item-input">
+                                        <input id="major" name="member_major" type="text" value="{$user.member_major}"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        宿舍号
+                                    </div>
+                                    <div class="item-input">
+                                        <input name="member_address" placeholder="宿舍号" type="text" value="{$user.member_address}">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        QQ
+                                    </div>
+                                    <div class="item-input">
+                                        <input name="member_qq" placeholder="QQ" type="text" value="{$user.member_qq}">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">
+                                        手机号
+                                    </div>
+                                    <div class="item-input">
+                                        <input name="member_phonenum" placeholder="手机号" type="text" value="{$user.member_phonenum}">
+                                        </input>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    {/if}
+                </div>
+                <div class="content-block">
+                    <div class="row">
+                        <button class="col-100 button button-big button-fill button-success" type="submit">
+                            确认修改
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    
+    <div class="page" id="router5">
+        <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="">
+                <span class="icon icon-left">
+                </span>
+                返回
+            </a>
+            <h1 class="title">
+                更改头像
+            </h1>
+        </header>
+        <div class="content" id="editavatar">
+            <div class="content-block">
+                <h3 id="edittitle">
+                    下面的那个人是最帅的
+                </h3>
+                <form action="{:url('index/editinfo')}" class="cd-form" id="subForm" method="post">
+                    <div id="cd-signup">
+                        <p class="fieldset">
+                            <label class="image-replace cd-photo1" for="signup-idimage1">
+                            </label>
+                            <!-- <input id="frontSide" name="frontSide" type="hidden"> -->
+                            {if condition="$user"}
+                        {if condition="$user.member_avatar"}
+                            <img class="img" height="200" id="upload_img" src="{$user.member_avatar}" style=" border-radius:50%; overflow:hidden; " type="hidden" width="200">
+                                {else/}
+                                <img class="img" height="200" id="upload_img" src="__STATIC__INDEX/img/avatar.png" style=" border-radius:50%; overflow:hidden; " type="hidden" width="200">
+                                    {/if}
+                        {/if}
+                                    <input id="file_upload_image" name="member_avatar" type="hidden" value="">
+                                        <input class="full-width has-padding has-border" id="signup-idimage1" type="file">
+                                            <div id="tip-queue1">
+                                            </div>
+                                        
+                                <div class="row">
+    <button class="col-100 button button-big" type="submit">
+        确认修改
+    </button>
+</div>
+                        </p>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Left Panel with Reveal effect -->
+<div class="panel panel-left panel-reveal theme-white" id="panel">
+    {if condition="$user"}
+    <a href="#router3" style="color: black;">
+        <span class="icon icon-edit close-panel" id="paneltopicon">
+        </span>
+    </a>
+    {else/}
+    {/if}
+    <div id="panel-top">
+        {if condition="$user"}
+                {if condition="$user.member_avatar"}
+        <div class="img">
+            <img id="avatar" src="{$user.member_avatar}">
+            </img>
+        </div>
+        {else/}
+        <div class="img">
+            <img id="avatar" src="__STATIC__INDEX/img/avatar.png">
+            </img>
+        </div>
+        {/if}
+                {if condition="$user.member_name"}
+        <div class="text">
+            <h4 id="name">
+                {$user.member_name}
+            </h4>
+        </div>
+        {else/}
+        <div class="text">
+            <a href="#router3">
+                <h4 id="name">
+                    修改个人信息
+                </h4>
+            </a>
+        </div>
+        {/if}
+                {else/}
+        <div class="img">
+            <img id="avatar" src="__STATIC__INDEX/img/avatar.png">
+            </img>
+        </div>
+        <div class="text">
+            <a class="external" href="{:url('index/login')}">
+                <h4 id="name">
+                    登录/注册
+                </h4>
+            </a>
+        </div>
+        {/if}
+    </div>
+    <div class="list-block" id="itemlist">
+        <ul>
+            <a href="{:url('index/myaccount')}" class="external">
+                <li class="item-content panelitem">
+                    <div class="item-media">
+                        <svg aria-hidden="true" class="iconfont panelicon">
+                            <use xlink:href="#icon-zhanghu">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title panelitemtitle">
+                            我的账户
+                        </div>
+                    </div>
+                </li>
+            </a>
+            <a class="external" href="{:url('index/community')}">
+                <li class="item-content panelitem">
+                    <div class="item-media">
+                        <svg aria-hidden="true" class="iconfont panelicon">
+                            <use xlink:href="#icon-shetuan">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title panelitemtitle">
+                            我的社团
+                        </div>
+                    </div>
+                </li>
+            </a>
+            <a class="external" href="{:url('index/myactivity')}">
+                <li class="item-content panelitem">
+                    <div class="item-media">
+                        <svg aria-hidden="true" class="iconfont panelicon">
+                            <use xlink:href="#icon-huodong">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title panelitemtitle">
+                            我的活动
+                        </div>
+                    </div>
+                </li>
+            </a>
+            <a href="{:url('index/mymsg')}" class="external">
+                <li class="item-content panelitem">
+                    <div class="item-media">
+                        <svg aria-hidden="true" class="iconfont panelicon">
+                            <use xlink:href="#icon-xiaoxi">
+                            </use>
+                        </svg>
+                    </div>
+                    <div class="item-inner">
+                        <div class="item-title panelitemtitle">
+                            我的消息
+                        </div>
+                    </div>
+                </li>
+            </a>
+        </ul>
+    </div>
+</div>

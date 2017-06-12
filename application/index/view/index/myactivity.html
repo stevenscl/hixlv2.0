@@ -1,0 +1,154 @@
+{include file="public/meta" /}
+<style type="text/css">
+    #waitingcontainer{
+        background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+</style>
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group" id="openxiaolian">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page page-current">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left external" href="{:url('index/news')}">
+                    <span class="icon icon-left">
+                    </span>
+                    返回
+                </a>
+                <h1 class="title">
+                    我的活动
+                </h1>
+            </header>
+            {if condition="$useraccount.registered_id"}
+            <div class="content">
+                {volist name="activity" id="vo"}
+                <div class="list-block" id="zg-card">
+                    <ul>
+                        <a class="item-link item-content" href="#activity{$vo.activity_id}" style="height:13rem;">
+                            <div style="width:5rem; height:13rem;">
+                                <img id="zg-img" src="{$vo.activity_image}" style="width: 5rem; height:6rem">
+                                </img>
+                            </div>
+                            <div id="zg-r" style="width:12.5rem; height:12rem;">
+                                <span id="zg-biaoti">
+                                    {$vo.activity_name}
+                                </span>
+                                <br/>
+                                <span id="zg-biaotis">
+                                    社团：{$vo.community_name}
+                                </span>
+                                <br/>
+                                <span id="zg-biaotis">
+                                    地点：{$vo.activity_location}
+                                </span>
+                                <br/>
+                                <span id="zg-biaotis">
+                                    时间：{$vo.activity_starttime}-{$vo.activity_endtime}
+                                </span>
+                                <div id="zg-beijing">
+                                    <div id="zg-center">
+                                        {$vo.activity_abstract}
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </ul>
+                </div>
+                {/volist}
+            </div>
+            {else/}
+            <!-- 用户没有登录返回提示登录界面 -->
+            <div class="content" id="waitingcontainer">
+                <div align="center" id="wait">
+                    <!--这是内容块  -->
+                    <div id="wait-inside">
+                        <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                            <div calss="wait-line">
+                                您还没有登入
+                            </div>
+                            <div class="wait-line">
+                                点击
+                                <a class="external" href="{:url('index/login')}">
+                                    登录
+                                </a>
+                            </div>
+                        </img>
+                    </div>
+                </div>
+            </div>
+            {/if}
+        </div>
+        {volist name="activity" id="vo"}
+        <div class="page " id="activity{$vo.activity_id}">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="">
+                    <span class="icon icon-left">
+                    </span>
+                    返回
+                </a>
+                <h1 class="title">
+                    活动详情
+                </h1>
+            </header>
+            <div class="content">
+                <div align="center" id="zg1-beijing1">
+                    <img id="zg1-image" src="{$vo.activity_image}">
+                    </img>
+                </div>
+                <div id="zg-introduce">
+                    <span id="zg1-biaoti">
+                        {$vo.activity_name}
+                    </span>
+                    <br/>
+                    <span id="zg1-fbiaoti">
+                        活动时间    {$vo.activity_starttime}-{$vo.activity_endtime}
+                    </span>
+                    <br/>
+                    <span id="zg1-fbiaoti">
+                        活动地点    {$vo.activity_location}
+                    </span>
+                    <br/>
+                    <span id="zg1-fbiaoti">
+                        活动负责    {$vo.community_name}
+                    </span>
+                    <div id="zg1-beijing2">
+                        <span id="zg1-fbiaoti">
+                            活动介绍
+                        </span>
+                        <br/>
+                        <div id="zg1-fbiaoti2">
+                            {$vo.editorValue}
+                        </div>
+                    </div>
+                </div>
+                <div class="content-block">
+                    <div class="row">
+                        {if condition="$useraccount.registered_id"}
+             {if condition="$user.member_qq||$user.member_phonenum"}
+                        <form action="{:url('index/cancelactivity')}" method="post">
+                            <input name="activity_id" type="hidden" value="{$vo.activity_id}">
+                                <input name="registered_id" type="hidden" value="{$useraccount.registered_id}">
+                                    <button class="col-100 button button-big button-fill button-danger" type="submit">
+                                        取消报名
+                                    </button>
+                                </input>
+                            </input>
+                        </form>
+                        {else/}
+                        <a class="col-100 button button-big button-fill button-danger" href="{:url('index/alertperfect')}">
+                            取消报名
+                        </a>
+                        {/if}
+      {else/}
+                        <a class="col-100 button button-big button-fill button-danger" href="{:url('index/alertlogin')}">
+                            取消报名
+                        </a>
+                        {/if}
+                    </div>
+                </div>
+            </div>
+        </div>
+        {/volist}
+    </div>
+</body>
+{include file="public/footer" /}

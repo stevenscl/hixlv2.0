@@ -1,0 +1,65 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>
+    帐号管理-添加帐号
+</title>
+<body>
+    <article class="page-container">
+        <form action="{:url('registered/update')}" class="form form-horizontal" id="form-admin-add" method="post">
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    <span class="c-red">
+                        *
+                    </span>
+                    姓名：
+                </label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input class="input-text" id="registered_name" name="registered_name" placeholder="" type="text" value="{$registered.registered_name}">
+                    </input>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    <span class="c-red">
+                        *
+                    </span>
+                    密码：
+                </label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input class="input-text" id="registered_password" name="registered_password" placeholder="" type="text" value="{$registered.registered_password}">
+                    </input>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                    <span class="c-red">
+                        *
+                    </span>
+                    邮箱：
+                </label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input class="input-text" id="registered_email" name="registered_email" placeholder="" type="text" value="{$registered.registered_email}">
+                    </input>
+                </div>
+            </div>
+            <div class="row cl">
+                <input name="registered_id" type="hidden" value="{$registered.registered_id}">
+                    <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                        <button class="btn btn-primary radius" type="submit">
+                            <i class="Hui-iconfont">
+                                
+                            </i>
+                            保存
+                        </button>
+                        <button class="btn btn-default radius" onclick="layer_close();" type="button">
+                            取消
+                        </button>
+                    </div>
+                </input>
+            </div>
+        </form>
+    </article>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--/_footer 作为公共模版分离出去-->
+</body>

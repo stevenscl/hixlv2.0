@@ -1,0 +1,146 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>
+    社团信息
+</title>
+<body>
+    <nav class="breadcrumb">
+        <i class="Hui-iconfont">
+            
+        </i>
+        首页
+        <span class="c-gray en">
+            >
+        </span>
+        社团管理
+        <span class="c-gray en">
+            >
+        </span>
+        社团信息
+        <a class="btn btn-success radius r" href="javascript:location.replace(location.href);" style="line-height:1.6em;margin-top:3px" title="刷新">
+            <i class="Hui-iconfont">
+                
+            </i>
+        </a>
+    </nav>
+    <div class="page-container">
+        <div class="cl pd-5 bg-1 bk-gray">
+            <span class="l">
+                <a class="btn btn-primary radius" href="javascript:;" onclick="add('添加社团','{:url('communitysinfo/add')}','','470')">
+                    <i class="Hui-iconfont">
+                        
+                    </i>
+                    添加社团
+                </a>
+            </span>
+            <span class="r">
+                共有数据：
+                <strong>
+                    {$count}
+                </strong>
+                条
+            </span>
+        </div>
+        <div class="mt-20">
+            <table class="table table-border table-bordered table-bg table-hover table-sort">
+                <thead>
+                    <tr class="text-c">
+                        <th width="100">
+                            <input name="" type="checkbox" value="">
+                            </input>
+                        </th>
+                        <th width="100">
+                            社团ID
+                        </th>
+                        <th width="100">
+                            社团名称
+                        </th>
+                        <th width="100">
+                            社团类型
+                        </th>
+                        <th width="100">
+                            创建时间
+                        </th>
+                        <th width="100">
+                            现任社长
+                        </th>
+                        <th width="100">
+                            副社长
+                        </th>
+                        <th width="200">
+                            社团星级
+                        </th>
+                        <th width="100">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {volist name="community" id="vo"}
+                    <tr class="text-c">
+                        <td>
+                            <input name="" type="checkbox" value="">
+                            </input>
+                        </td>
+                        <td>
+                         {$vo.community_id}
+                            
+                        </td>
+                        <td>
+                             <a class="maincolor" href="javascript:;" onClick="edit('社团信息','{:url('common/community',['id'=>$vo.community_id])}','','')" >{$vo.community_name}</a>
+                        </td>
+                        <td>
+                            {$vo.community_type}
+                        </td>
+                        <td>
+                            {$vo.create_time|date="y-m-d h:i",###}
+                        </td>
+                        <td>
+                            <a class="maincolor" href="javascript:;" onClick="edit('帐号信息','{:url('common/user',['id'=>$vo.registered_id])}','','')" >{$vo.registered_name}</a> 
+                        </td>
+                        <td>
+                        <a class="maincolor" href="javascript:;" onClick="edit('帐号信息','{:url('common/user',['id'=>$vo.deputy_id])}','','')" >{$vo.deputy_name}</a> 
+                            
+                        </td>
+                        <td>
+                            {$vo.community_star}
+                        </td>
+                        <td class="f-14 td-manage">
+                            <a href="javascript:;" onclick="edit('资讯编辑','{:url('communitysinfo/edit',['id'=>$vo.community_id])}','','')" style="text-decoration:none" title="编辑">
+                                <i class="Hui-iconfont">
+                                    
+                                </i>
+                            </a>
+                            <a class="ml-5" href="javascript:;" onclick="delcancel('{:url('communitysinfo/cancel',['id'=>$vo.community_id])}')" style="text-decoration:none" title="删除">
+                                <i class="Hui-iconfont">
+                                    
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--请在下方写此页面业务相关的脚本-->
+    <script src="__STATIC__ADMIN/hui/lib/datatables/1.10.0/jquery.dataTables.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        $('.table-sort').dataTable({
+        "aaSorting": [
+            [1, "desc"]
+        ], //默认第几个排序
+        "bStateSave": true, //状态保存
+        "aoColumnDefs": [
+            //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+            {
+                "orderable": false,
+                "aTargets": [0,2,5,6]
+            } // 不参与排序的列
+        ]
+    });
+    </script>
+</body>

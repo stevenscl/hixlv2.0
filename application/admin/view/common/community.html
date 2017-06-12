@@ -1,0 +1,64 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>社团信息</title>
+</head>
+
+<body>
+    <article class="page-container">
+        <form action="" method="post" class="form form-horizontal" id="">
+        
+        
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团ID：</label>
+               {$community.community_id}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团名称：</label>
+                {$community.community_name}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团类型：</label>
+                {$community.community_type}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团logo：</label>
+                <img src="{$community.community_logo}" width="200" height="200">
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团简介：</label>
+                {$community.community_introduce}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团创建时间：</label>
+                {$community.create_time|date="y-m-d h:i",###}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">现任社长：</label>
+                {$community.registered_name}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">副社长：</label>
+                {$community.deputy_name}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团星级：</label>
+                {$community.community_star}
+            </div>
+            
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">社团人数：</label>
+                {$community.community_membernum}
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-6 col-sm-offset-6">
+                    <button onClick="layer_close();" class="btn btn-secondary radius" type="button">关闭</button>
+                </div>
+            </div>
+        </form>
+    </article>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--/_footer 作为公共模版分离出去-->
+</body>
+
+</html>

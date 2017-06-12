@@ -1,0 +1,89 @@
+{include file="public/meta" /}
+<style type="text/css">
+    #waitingcontainer{
+        background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+</style>
+<body>
+<header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left" href="{:url('index/news')}">
+                <span class="icon icon-left">
+                </span>
+                返回
+            </a>
+            <h1 class="title">
+                我的账户
+            </h1>
+        </header>
+        {if condition="$useraccount.registered_id"}
+        
+        <div class="content">
+            <div class="content-block">
+                <div class="img">
+                    <img id="avatar" src="__STATIC__INDEX/img/logo.png">
+                </div>
+                <div class="list-block">
+                    <ul>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    登入帐号
+                                </div>
+                                <div class="item-after">
+                                    {$useraccount.registered_id}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    邮箱
+                                </div>
+                                <div class="item-after">
+                                    {$useraccount.registered_email}
+                                </div>
+                            </div>
+                        </li>
+                        <li class="item-content">
+                            <div class="item-inner">
+                                <div class="item-title">
+                                    加入时间
+                                </div>
+                                <div class="item-after">
+                                    {$useraccount.create_time|date="y-m-d h:i",###}
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="content-block">
+                        <div class="row">
+                            <a class="col-100 button button-big button-fill button-danger" href="{:url('index/index/logout')}">
+                                退出当前帐号
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {else/}
+                              <!-- 用户没有登录返回提示登录界面 -->
+            <div class="content" id="waitingcontainer">
+        <div align="center" id="wait">
+            <!--这是内容块  -->
+            <div id="wait-inside">
+                <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                    <div calss="wait-line">
+                        您还没有登入
+                    </div>
+                    <div class="wait-line">
+                        点击<a href="{:url('index/login')}" class="external">登录</a>
+                    </div>
+
+                </img>
+            </div>
+        </div>
+    </div>
+        {/if}
+    </div>
+    </body>
+{include file="public/footer" /}

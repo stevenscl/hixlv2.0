@@ -1,0 +1,49 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+{load href="__STATIC__ADMIN/js/echarts.js" /}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>ECharts</title>
+
+
+    <!-- 引入 echarts.js -->
+    <script src="echarts.min.js"></script>
+</head>
+<body>
+    <!-- 为ECharts准备一个具备大小（宽高）的Dom -->
+    <div id="main" style="width: 1600px;height:800px;"></div>
+    <script type="text/javascript">
+        // 基于准备好的dom，初始化echarts实例
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '社团活动次数'
+            },
+            tooltip: {},
+            legend: {
+                data:['活动次数']
+            },
+            xAxis: {
+                data: {$result}
+            },
+            yAxis: {},
+            series: [{
+                name: '活动次数',
+                type: 'bar',
+                data: {$count}
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+<input class="btn btn-primary size-L radius" data-href="{:url('countsystem/community')}" data-title="社团人数" href="javascript:;" onclick="Hui_admin_tab(this)" value="社团人数">
+</html>
+<!--_footer 作为公共模版分离出去-->
+{include file="public/footer" /}
+<!--/_footer /作为公共模版分离出去-->

@@ -1,0 +1,61 @@
+<!DOCTYPE html>  
+<html lang="en">  
+<head>  
+    <meta charset="UTF-8">  
+    <title>小联2.0</title>  
+    <link rel="stylesheet" type="text/css" href="__STATIC__ADMIN/css/login.css" tppabs="__STATIC__ADMIN/css/login.css" />  
+    <style>
+    body{height:100%;background:#f7fafc;overflow:hidden;}
+    canvas{z-index:-1;position:absolute;}
+    </style>
+    <script src="__STATIC__ADMIN/js/jquery.js"></script>
+    <script src="__STATIC__ADMIN/js/verificationNumbers.js" tppabs="__STATIC__ADMIN/js/verificationNumbers.js"></script>
+    <script src="__STATIC__ADMIN/js/Particleground.js" tppabs="__STATIC__ADMIN/js/Particleground.js"></script>
+    <script>
+    $(document).ready(function() {
+    //粒子背景特效
+    $('body').particleground({
+     dotColor: '#eceeef',
+        lineColor: '#eceeef'
+    });
+    // //验证码
+    // createCode();
+    // //测试提交，对接程序删除即可
+    // $(".submit_btn").click(function(){
+    //     location.href="javascrpt:;"/*tpa=http://***index.html*/;
+    //     });
+    });
+    </script>
+</head>  
+<body>
+<form method="post" action="{:url('login/index')}">  
+    <dl class="admin_login">
+ <dt>
+ <img src="__STATIC__INDEX/img/logo.png" width="150" height="150">
+  <h1>Hello 小联</h1>
+  <em>v2.0 Management System</em>
+ </dt>
+ <dd class="user_icon">
+
+  <input type="text"  required="required" placeholder="账号" name="registered_id" class="login_txtbx"/>
+ </dd>
+ <dd class="pwd_icon">
+  <input type="password" required="required" placeholder="密码" name="registered_password" class="login_txtbx"/>
+ </dd>
+ 
+ <dd class="tijiao">
+  <button type="submit" class="submit_btn">登录</button> 
+ </dd>
+</dl>
+</form>
+<footer class="footer mt-20">
+    <div class="container-fluid">
+        <nav> <a href="#" target="_blank">关于我们</a> <span class="pipe">|</span> <a href="#" target="_blank">联系我们</a> <span class="pipe"></nav>
+        <p>Copyright &copy;2017 南邮通达社团联合会 All Rights Reserved. <br>
+            <a href="http://www.miitbeian.gov.cn/" target="_blank" rel="nofollow">京ICP备1000000号</a><br>
+        </p>
+    </div>
+</footer>
+</body>
+
+</html>  

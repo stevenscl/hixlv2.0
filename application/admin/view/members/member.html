@@ -1,0 +1,160 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>
+    会员管理
+</title>
+<body>
+    <nav class="breadcrumb">
+        <i class="Hui-iconfont">
+            
+        </i>
+        首页
+        <span class="c-gray en">
+            >
+        </span>
+        用户管理
+        <span class="c-gray en">
+            >
+        </span>
+        会员管理
+        <a class="btn btn-success radius r" href="javascript:location.replace(location.href);" style="line-height:1.6em;margin-top:3px" title="刷新">
+            <i class="Hui-iconfont">
+                
+            </i>
+        </a>
+    </nav>
+    <div class="page-container">
+        <div class="cl pd-5 bg-1 bk-gray">
+            <span class="r">
+                共有数据：
+                <strong>
+                    {$count}
+                </strong>
+                条
+            </span>
+        </div>
+        <div class="mt-20">
+            <table class="table table-border table-bordered table-hover table-bg table-sort">
+                <thead>
+                    <tr class="text-c">
+                        <th width="25">
+                            <input name="" type="checkbox" value=""/>
+                        </th>
+                        <th width="80">
+                            学号
+                        </th>
+                        <th width="80">
+                            姓名
+                        </th>
+                        <th width="100">
+                            专业
+                        </th>
+                        <th width="70">
+                            昵称
+                        </th>
+                        <th width="30">
+                            性别
+                        </th>
+                        <th width="100">
+                            创建社团
+                        </th>
+                        <th width="100">
+                            角色
+                        </th>
+                        <th width="100">
+                            手机
+                        </th>
+                        <th width="100">
+                            QQ
+                        </th>
+                        <th width="80">
+                            宿舍号
+                        </th>
+                        <th width="100">
+                            加入时间
+                        </th>
+                        <th width="100">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {volist name="member" id="vo"}
+                    <tr class="text-c">
+                        <td>
+                            <input name="" type="checkbox" value="1"/>
+                        </td>
+                        <td>
+                           <a class="maincolor" href="javascript:;" onClick="edit('帐号信息','{:url('common/user',['id'=>$vo.registered_id])}','','')" >{$vo.registered_id}</a>
+                        </td>
+                        <td>
+                            {$vo.registered_name}
+                        </td>
+                         <td>
+                            {$vo.member_major}
+                        </td>
+                        <td>
+                            {$vo.member_name}
+                        </td>
+                       
+                        <td>
+                            {$vo.member_sex}
+                        </td>
+                        <td>
+                        <a class="maincolor" href="javascript:;" onClick="edit('社团信息','{:url('common/community',['id'=>$vo.community_id])}','','')" > {$vo.community_name}</a>
+                          
+                        </td>
+                        <td>
+                           {$vo.root_name}
+                        </td>
+                        <td>
+                            {$vo.member_phonenum}
+                        </td>
+                        <td>
+                            {$vo.member_qq}
+                        </td>
+                        <td>
+                            {$vo.member_address}
+                        </td>
+                        <td>
+                            {$vo.create_time|date="y-m-d h:i",###}
+                        </td>
+                        <td class="td-manage">
+                            <a href="javascript:;" onclick="edit('编辑','{:url('members/edit',['id'=>$vo.registered_id])}','','')" style="text-decoration:none" title="编辑">
+                                <i class="Hui-iconfont">
+                                    
+                                </i>
+                            </a>
+                            <a class="ml-5" href="javascript:;" onclick="edit('删除','{:url('members/del',['id'=>$vo.registered_id])}','','')" style="text-decoration:none" title="删除">
+                                <i class="Hui-iconfont">
+                                    
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                    {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--请在下方写此页面业务相关的脚本-->
+    <script src="__STATIC__ADMIN/hui/lib/datatables/1.10.0/jquery.dataTables.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        $('.table-sort').dataTable({
+        "aaSorting": [
+            [1, "desc"]
+        ], //默认第几个排序
+        "bStateSave": true, //状态保存
+        "aoColumnDefs": [
+            //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+            {
+                "orderable": false,
+                "aTargets": [0, 2, 3,4,8,9,12]
+            } // 不参与排序的列
+        ]
+    });
+    </script>
+</body>

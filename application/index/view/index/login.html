@@ -1,0 +1,130 @@
+{include file="public/meta" /}
+</head>
+
+<body>
+    <div class="page-group">
+        <div class="page page-current" id='router'>
+        <form action="{:url('index/login')}" method="post">
+            <div class="content">
+                <div class="list-block">
+                    <div class="img">
+                        <img id="avatar" src="__STATIC__INDEX/img/logo.png">
+                    </div>
+                    <ul>
+                        <!-- Text inputs -->
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">账号</div>
+                                    <div class="item-input">
+                                        <input type="text" placeholder="学号" name="registered_id">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="item-content">
+                                <div class="item-inner">
+                                    <div class="item-title label">密码</div>
+                                    <div class="item-input">
+                                        <input type="password" placeholder="密码" name="registered_password">
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="content-block">
+                    <div class="row">
+                        <div class="col-50"><a href="{:url('index/news')}" class="button button-big button-fill button-danger">取消</a></div>
+                        <button type="submit" class="col-50 button button-big button-fill button-success">登入</button>
+                    </div>
+                </div>
+                <div class="loginservice">
+                    <div id="forget"><a href="">忘记密码？</a></div>
+                    <div id="registered"><a href="#router2">新用户注册</a></div>
+                </div>
+            </div>
+            </form>
+        </div>
+        <div class="page" id='router2'>
+            <form action="{:url('index/registered')}" method="post">
+                <header class="bar bar-nav">
+                    <a class="button button-link button-nav pull-left back" href="">
+                        <span class="icon icon-left"></span> 返回
+                    </a>
+                    <h1 class='title'>注册</h1>
+                </header>
+                <div class="content">
+                    <div class="list-block">
+                        <div class="img">
+                            <img id="avatar" src="__STATIC__INDEX/img/logo.png">
+                        </div>
+                        <ul>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">账号</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="学号" name="registered_id">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">姓名</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="姓名" name="registered_name">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">密码</div>
+                                        <div class="item-input">
+                                            <input type="password" placeholder="密码" name="registered_password">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">邮箱</div>
+                                        <div class="item-input">
+                                            <input type="email" placeholder="邮箱" name="registered_email">
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">验证码</div>
+                                        <div class="item-input">
+                                            <input type="text" placeholder="请输入验证码" name="verifycode">
+                                            <div>{:captcha_img()}</div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <div class="row">
+                            <button type="submit" class="col-100 button button-big button-fill button-success">注册</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {include file="public/footer" /}
+</body>
+
+</html>

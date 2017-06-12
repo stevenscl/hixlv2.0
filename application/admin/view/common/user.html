@@ -1,0 +1,84 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>帐号信息</title>
+</head>
+
+<body>
+    <article class="page-container">
+        <form action="" method="post" class="form form-horizontal" id="">
+        
+        
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">学号：</label>
+               {$member.registered_id}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">姓名：</label>
+                {$member.registered_name}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">专业：</label>
+                {$member.member_major}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">头像：</label>
+                <img src="{$member.member_avatar}">
+               
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">账号创建时间：</label>
+                {$member.create_time|date="y-m-d h:i",###}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">昵称：</label>
+                {$member.member_name}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">性别：</label>
+                {$member.member_sex}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">生日：</label>
+                {$member.member_birth}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">邮箱：</label>
+                {$member.registered_email}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">联系方式：</label>
+                {$member.member_phonenum}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">QQ：</label>
+                {$member.member_qq}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">宿舍号：</label>
+                {$member.member_address}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">创建社团：</label>
+                {$member.community_name}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">角色：</label>
+                {$member.root_name}
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">加入的社团：</label>
+                {$member.joincommunity}
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-6 col-sm-offset-6">
+                    <button onClick="layer_close();" class="btn btn-secondary radius" type="button">关闭</button>
+                </div>
+            </div>
+        </form>
+    </article>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--/_footer 作为公共模版分离出去-->
+</body>
+
+</html>

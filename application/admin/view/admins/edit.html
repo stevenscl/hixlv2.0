@@ -1,0 +1,54 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>
+    管理员管理-添加管理员
+</title>
+<body>
+    <article class="page-container">
+        <form action="{:url('admins/update')}" class="form form-horizontal" id="form-admin-add" method="post">
+            <div class="row cl">
+            
+                <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">
+                        *
+                    </span>
+                    授予权限：
+                </label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <span class="select-box">
+                        <select class="select" name="root_id" size="1">
+                            <option selected="" value="">
+                                请选择权限
+                            </option>
+                            
+                            <option value="2">
+                                社长
+                            </option>
+                           <option value="3">
+                                社联管理员
+                            </option>
+                           
+                        </select>
+                    </span>
+                </div>
+            
+            </div>
+            <div class="row cl">
+            <input name="registered_id" type="hidden" value="{$member.registered_id}">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <button class="btn btn-success radius" type="submit">
+                        <i class="icon-ok">
+                        </i>
+                        保存
+                    </button>
+                    <button class="btn btn-default radius" onclick="layer_close();" type="button">
+                        取消
+                    </button>
+                </div>
+            </div>
+        </form>
+    </article>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--/_footer 作为公共模版分离出去-->
+</body>

@@ -1,0 +1,178 @@
+﻿{include file="public/meta" /}
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group" id="openxiaolian">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page page-current">
+            <!-- 标题栏 -->
+            <header class="bar bar-nav">
+                <a class="icon icon-me pull-left open-panel">
+                </a>
+                <h1 class="title">
+                    Hello 小联
+                </h1>
+            </header>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external active" href="{:url('index/news')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-xinwen">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        新闻
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/activity')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-huodong">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        活动
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/community')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-shetuan">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        社团
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/service')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-fuwu">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        服务
+                    </span>
+                </a>
+            </nav>
+            <!-- 这里是页面内容区 -->
+            <!-- 下面是内联组件 -->
+            <!-- content应该拥有"pull-to-refresh-content"类,表示启用下拉刷新 -->
+            <div class="content pull-to-refresh-content" data-ptr-distance="55">
+                <!-- 默认的下拉刷新层 -->
+                <div class="pull-to-refresh-layer">
+                    <div class="preloader">
+                    </div>
+                    <div class="pull-to-refresh-arrow">
+                    </div>
+                </div>
+                <!-- Slider main container -->
+                <div class="swiper-container" id="slider" style="height: 15rem">
+                    <!-- Additional required wrapper -->
+                    <div class="swiper-wrapper" style="height: 15rem">
+                        <!-- Slides -->
+                        {volist name="bananer" id="vo"}
+                        <div class="swiper-slide" style="height: 15rem">
+                        <a href="#news{$key}">
+                            <img id="news-picture" src="{$vo}"/>
+                            </a>
+                        </div>
+                        {/volist}
+                    </div>
+                    <!-- If we need pagination -->
+                    <div class="swiper-pagination">
+                    </div>
+                </div>
+                <!-- 上面是swiper组件 -->
+                <div class="content-block" id="news-inlink">
+                    <!--内联组件开始  -->
+                    <!-- 下面是新闻作者栏 -->
+                    {volist name="news" id="vo"}
+                    <div id="news-author">
+                    {if condition="$vo.community_logo"}
+                        <img id="news-portrait" src="{$vo.community_logo}">
+                    {else/}
+                        <img id="news-portrait" src="__STATIC__INDEX/img/logo.png">
+                        {/if}
+                            <a id="news-text">
+                                {$vo.community_name}
+                            </a>
+                        </img>
+                    </div>
+                    <!-- 作者栏结束 -->
+                    <a href="#news{$vo.news_id}">
+                        <div class="news-title1" id="news-1">
+                            {$vo.news_title}
+                        </div>
+                        <div class="card demo-card-header-pic" id="news-inside">
+                            <div class="card-header color-white no-border no-padding" valign="bottom">
+                                <img alt="" class="card-cover" id="news-photo" src="{$vo.news_image}">
+                                </img>
+                            </div>
+                            <div class="card-content">
+                                <div class="card-content-inner">
+                                    <p class="color-gray">
+                                        发表于 {$vo.news_time|date="y-m-d h:i",###}
+                                    </p>
+                                    <p class="news-digest">
+                                        {$vo.news_abstract}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <!--  <div id="news-space">
+                        </div> -->
+                    </a>
+                    {/volist}
+                    <!-- 第一个新闻结束 -->
+                </div>
+                <!-- 下拉刷新栏结束 -->
+            </div>
+            <!-- 内容区内联组件-->
+            <!-- 这是content结束-->
+        </div>
+        <!-- 下面是内联的页面 -->
+        {volist name="news" id="vo"}
+        <div class="page" id="news{$vo.news_id}">
+            <header class="bar bar-nav">
+                <a class="button button-link button-nav pull-left back" href="">
+                    <span class="icon icon-left">
+                    </span>
+                    返回
+                </a>
+                <h1 class="title">
+                    {$vo.news_title2}
+                </h1>
+            </header>
+            <div class="content">
+                <div class="content-block" id="news-inlink">
+                    <div id="news-z-model">
+                        <!--遮罩模块-->
+                        <img class="news-inlink-picture" src="{$vo.news_image}">
+                            <!--内联头图 -->
+                            <img id="z-picture" src="__STATIC__INDEX/img/on.png">
+                                <!--遮罩图片 -->
+                            </img>
+                        </img>
+                    </div>
+                    <h3 class="news-inlink-title">
+                        {$vo.news_title}
+                    </h3>
+                    {$vo.editorValue}
+                </div>
+            </div>
+        </div>
+        {/volist}
+        <!-- 其他的单个page内联页（如果有） -->
+    </div>
+    {include file="public/sidebar" /}
+
+{include file="public/footer" /}
+
+{include file="public/sidebarjs" /}
+
+</body>

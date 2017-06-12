@@ -1,0 +1,42 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>社团信息-展示图片</title>
+</head>
+
+<body>
+    <article class="page-container">
+        <form action="{:url('communitysinfo/saveimg')}" method="post" class="form form-horizontal" id="form-admin-add">
+         <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3">
+                <span class="c-red">
+                        *
+                    </span>
+                    展示图片：
+                </label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input id="signup-idimage6" multiple="true" type="file" for="signup-idimage6">
+                        <img height="180" id="upload_img" src="" style="display: none" width="375">
+                            <input id="file_upload_image" multiple="true" name="community_image" type="hidden" value="">
+                            <div id="tip-queue6"></div>
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>排序：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="0" id="img_listorder" name="img_listorder">
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <button type="submit" class="btn btn-success radius"><i class="icon-ok"></i> 确定</button>
+                    <button onClick="layer_close();" class="btn btn-default radius" type="button">取消</button>
+                </div>
+            </div>
+        </form>
+    </article>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--/_footer 作为公共模版分离出去-->
+</body>
+
+</html>

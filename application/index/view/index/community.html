@@ -1,0 +1,600 @@
+{include file="public/meta" /}
+<style type="text/css">
+    #waitingcontainer{
+        background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+</style>
+
+<body>
+    <!-- page集合的容器，里面放多个平行的.page，其他.page作为内联页面由路由控制展示 -->
+    <div class="page-group" id="openxiaolian">
+        <!-- 单个page ,第一个.page默认被展示-->
+        <div class="page page-current">
+            <!-- 标题栏 -->
+             <header class="bar bar-nav">
+                <a class="icon icon-me pull-left open-panel"></a>
+                <a class="pull-right" href="#router6" style="padding: .5rem 0;">
+                        <svg aria-hidden="true" class="iconfont" style="width: 1.2rem;height: 1.2rem;
+                ">
+                            <use xlink:href="#icon-add">
+                            </use>
+                        </svg>
+                    </a>
+                <!-- 下面是标签页 -->
+                <div class="content-block" id="club-label">
+                    <div class="buttons-row">
+                        <a href="#tab1" class="tab-link active button">社团信息</a>
+                        <a href="#tab2" class="tab-link button">我的社团</a>
+                    </div>
+                </div>
+
+                <!--  -->
+            </header>
+            <!-- 工具栏 -->
+            <nav class="bar bar-tab">
+                <a class="tab-item external" href="{:url('index/news')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-xinwen">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        新闻
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/activity')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-huodong">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        活动
+                    </span>
+                </a>
+                <a class="tab-item external active" href="{:url('index/community')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-shetuan">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        社团
+                    </span>
+                </a>
+                <a class="tab-item external" href="{:url('index/service')}">
+                    <span class="icon">
+                        <svg aria-hidden="true" class="iconfont">
+                            <use xlink:href="#icon-fuwu">
+                            </use>
+                        </svg>
+                    </span>
+                    <span class="tab-label">
+                        服务
+                    </span>
+                </a>
+            </nav>
+            <!-- 这里是页面内容区 -->
+            <div class="content">
+            <div class="tabs">
+                    <div id="tab1" class="tab active">
+                            <!-- 下面是内容 -->
+                        <!-- 内部标签页开始 -->
+                        <div class="buttons-tab">
+                            <a href="#tab3" class="tab-link active button">五星社团</a>
+                            <a href="#tab4" class="tab-link button">四星社团</a>
+                            <a href="#tab5" class="tab-link button">三星社团</a>
+                            <a href="#tab6" class="tab-link button">其他社团</a>
+                        </div>
+                        <div class="tabs">
+                            <div id="tab3" class="tab active">
+                                <!-- tab3内容 -->
+                                {volist name="community" id="vo"}
+                                {if condition="$vo.community_star eq '五星级'"}
+                                <a href="#club-{$vo.community_id}">
+                                    <div class="card demo-card-header-pic" id="club-cards">
+                                        <div valign="bottom" class="card-header color-white no-border no-padding" >
+                                            <img class='card-cover' src="{$vo.community_img[0]}" alt="" id="club-picture">
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-content-inner" id="club-content-cards">
+                                                <p class="club-names">{$vo.community_name}</p>
+                                                <p>{$vo.community_introduce}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="club-space"></div>
+                                {else/}
+                                {/if}
+                                {/volist}
+                            </div>
+                            <!-- tab3结束 -->
+                            <div id="tab4" class="tab">
+                               {volist name="community" id="vo"}
+                                {if condition="$vo.community_star eq '四星级'"}
+                                <a href="#club-{$vo.community_id}">
+                                    <div class="card demo-card-header-pic" id="club-cards">
+                                        <div valign="bottom" class="card-header color-white no-border no-padding" >
+                                            <img class='card-cover' src="{$vo.community_img[0]}" alt="" id="club-picture">
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-content-inner" id="club-content-cards">
+                                                <p class="club-names">{$vo.community_name}</p>
+                                                <p>{$vo.community_introduce}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="club-space"></div>
+                                {else/}
+                                {/if}
+                                {/volist}
+                            </div>
+                            <div id="tab5" class="tab">
+                                {volist name="community" id="vo"}
+                                {if condition="$vo.community_star eq '三星级'"}
+                                <a href="#club-{$vo.community_id}">
+                                    <div class="card demo-card-header-pic" id="club-cards">
+                                        <div valign="bottom" class="card-header color-white no-border no-padding" >
+                                            <img class='card-cover' src="{$vo.community_img[0]}" alt="" id="club-picture">
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-content-inner" id="club-content-cards">
+                                                <p class="club-names">{$vo.community_name}</p>
+                                                <p>{$vo.community_introduce}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="club-space"></div>
+                                {else/}
+                                {/if}
+                                {/volist}
+                            </div>
+                             <div id="tab6" class="tab">
+                                {volist name="community" id="vo"}
+                                {if condition="($vo.community_star eq '二星级') OR ($vo.community_star eq '一星级') "}
+                                <a href="#club-{$vo.community_id}">
+                                    <div class="card demo-card-header-pic" id="club-cards">
+                                        <div valign="bottom" class="card-header color-white no-border no-padding" >
+                                            <img class='card-cover' src="{$vo.community_img[0]}" alt="" id="club-picture">
+                                        </div>
+                                        <div class="card-content">
+                                            <div class="card-content-inner" id="club-content-cards">
+                                                <p class="club-names">{$vo.community_name}</p>
+                                                <p>{$vo.community_introduce}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                                <div class="club-space"></div>
+                                {else/}
+                                {/if}
+                                {/volist}
+                            </div>
+                            <!-- 内容结束 -->
+                        </div>
+                        <!-- 标签tabs结束 -->
+                    </div>
+                        <!-- tab1结束 -->
+                    <div id="tab2" class="tab">
+                        <div class="content-block" id="club-level">
+                            
+                                {if condition="$user"}
+            <!-- 用户登录的话判别有没有加入社团 -->
+            {if condition="$myjoincount!=0"}
+            <!-- 用户有加入社团，展示社团信息 -->
+            {volist name="mycommunity" id="vo"}
+            <div class="card demo-card-header-pic">
+                <div valign="bottom" class="card-header color-white no-border no-padding">
+                    <img src="{$vo.community_logo}" alt="" width="200" height="200" style="margin: 0 auto;">
+                </div>
+            <div class="card-content">
+                <div class="card-content-inner">
+                <p class="color-gray"><p style="font-weight: bold; font-size: .8rem;">社团简介:</p>{$vo.community_introduce}</p>
+               
+                </div>
+            </div>
+            <div class="card-content">
+                <div class="card-content-inner">
+               <!--  <p class="color-gray">社团名称：{$vo.community_name}</p> -->
+                 <p><span style="font-weight: bold;">社团名称：</span>{$vo.community_name}</p>
+                <p><span style="font-weight: bold;">社团类型：</span>{$vo.community_type}</p>
+                <p><span style="font-weight: bold;">社团星级：</span>{$vo.community_star}</p>
+                <p><span style="font-weight: bold;">现任社长：</span>{$vo.registered_name}</p>
+                <p><span style="font-weight: bold;">现任副社长：</span>{$vo.deputy_name}</p>
+                </div>
+            </div>
+            <div class="card-footer">
+                <a href="#mycommunity-{$vo.community_id}" class="link">点击查看更多</a>
+            </div>
+            </div>
+        
+           
+            {/volist}
+            {else/}
+            <!-- 用户没有加入社团返回社团信息列表 -->
+            <p>您已登录，没有社团</p>
+            <div class="content" id="waitingcontainer">
+        <div align="center" id="wait">
+            <!--这是内容块  -->
+            <div id="wait-inside">
+                <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                    <div calss="wait-line">
+                        您还未加入任何社团
+                    </div>
+                    <div class="wait-line">
+                        点击<a href="{:url('index/community')}" class="external">浏览社团信息</a>
+                    </div>
+
+                </img>
+            </div>
+        </div>
+    </div>
+            {/if}
+            {else/}
+            <!-- 用户没有登录返回提示登录界面 -->
+            <!-- <p>您还没有登入</p> -->
+            <div class="content" id="waitingcontainer">
+        <div align="center" id="wait">
+            <!--这是内容块  -->
+            <div id="wait-inside">
+                <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                    <div calss="wait-line">
+                        您还没有登入
+                    </div>
+                    <div class="wait-line">
+                        点击<a href="{:url('index/login')}" class="external">登录</a>
+                    </div>
+
+                </img>
+            </div>
+        </div>
+    </div>
+            {/if}
+
+
+                            </div>
+                        </div>
+                    </div>
+               <!--  <a class="external" href="{:url('index/mycommunity')}">
+                    scl
+                </a> -->
+                
+            </div>
+        </div>
+
+        <!-- 下面是社团信息内联 -->
+        {volist name="mycommunity" id="vo"}
+        <div class="page" id="mycommunity-{$vo.community_id}">
+            <header class="bar bar-nav" id="inlink-header">
+                <a class="button button-link button-nav pull-left back" href="">
+                    <span class="icon icon-left"></span>
+                </a>
+            </header>
+            <div class="content" id="content">
+                <div class="club-inlink-title">
+                    <img src="{$vo.community_logo}" class="club-avatar">
+                    <h4 class="inlink-club-names">{$vo.community_name}</h4>
+                </div>
+                <div class="content-block" style=" margin-top: 1rem; color: black;">
+                    <!-- Slider main container -->
+                    <div class="swiper-container" id="swiper-container1">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            {volist name="$vo.community_img" id="x"}
+                            <div class="swiper-slide" id="swiper-slide"><img src="{$x}" id="swiper-img"></div>
+                            {/volist}
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <!-- 上面是swiper组件 -->
+                    <p style="font-weight: bold; font-size: .8rem;">社团介绍:</p>
+                    {$vo.editorValue}
+                    <p><a href="{:url('index/setdel',['id'=>$vo.community_id])}" class="join-button external">申请退社</a></p>
+                </div>
+            </div>
+        </div>
+{/volist}
+        
+        <div class="page" id="router6">
+            <!-- 判别用户是否登录 -->
+            {if condition="$user"}
+            <form action="{:url('index/applycommunity')}" method="post">
+                <header class="bar bar-nav">
+                    <a class="button button-link button-nav pull-left back" href="">
+                        <span class="icon icon-left">
+                        </span>
+                        返回
+                    </a>
+                    <h1 class="title">
+                        申请社团
+                    </h1>
+                </header>
+                <div class="content">
+                    <div class="list-block">
+                        <ul>
+                            <!-- Text inputs -->
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            社团名称
+                                        </div>
+                                        <div class="item-input">
+                                            <input name="community_name" placeholder="社团名称" type="text">
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            社团类型
+                                        </div>
+                                        <div class="item-input">
+                                            <input id="communitytype" name="community_type" placeholder="文化体育类" type="text" value=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="align-top">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            社团简介
+                                        </div>
+                                        <div class="item-input">
+                                            <textarea name="community_introduce">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="align-top">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            申请理由
+                                        </div>
+                                        <div class="item-input">
+                                            <textarea name="community_reason">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            验证码
+                                        </div>
+                                        <div class="item-input">
+                                            <input name="verifycode" placeholder="请输入验证码" type="text">
+                                                <div>
+                                                    {:captcha_img()}
+                                                </div>
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-50">
+                                <a class="button button-big button-fill button-danger external" href="{:url('index/community')}">
+                                    取消
+                                </a>
+                            </div>
+                            <button class="col-50 button button-big button-fill button-success" type="submit">
+                                提交
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {else/}
+            <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="">
+                <span class="icon icon-left">
+                </span>
+                返回
+            </a>
+            <h1 class="title">
+                申请社团
+            </h1>
+        </header>
+           
+            <!-- 用户没有登录返回提示登录界面 -->
+            <div class="content" id="waitingcontainer">
+        <div align="center" id="wait">
+            <!--这是内容块  -->
+            <div id="wait-inside">
+                <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                    <div calss="wait-line">
+                        您还没有登入
+                    </div>
+                    <div class="wait-line">
+                        点击<a href="{:url('index/login')}" class="external">登录</a>
+                    </div>
+
+                </img>
+            </div>
+        </div>
+    </div>
+            
+          {/if}
+        </div>
+
+        <!-- 其他的单个page内联页（如果有） -->
+        <!-- 下面是社团信息内联 -->
+        {volist name="community" id="vo"}
+        <div class="page" id="club-{$vo.community_id}">
+            <header class="bar bar-nav" id="inlink-header">
+                <a class="button button-link button-nav pull-left back" href="">
+                    <span class="icon icon-left"></span>
+                </a>
+            </header>
+            <div class="content" id="content">
+                <div class="club-inlink-title">
+                    <img src="{$vo.community_logo}" class="club-avatar">
+                    <h4 class="inlink-club-names">{$vo.community_name}</h4>
+                </div>
+                <div class="content-block" style=" margin-top: 1rem; color: black;">
+                    <!-- Slider main container -->
+                    <div class="swiper-container" id="swiper-container1">
+                        <!-- Additional required wrapper -->
+                        <div class="swiper-wrapper">
+                            <!-- Slides -->
+                            {volist name="$vo.community_img" id="x"}
+                            <div class="swiper-slide" id="swiper-slide"><img src="{$x}" id="swiper-img"></div>
+                            {/volist}
+                        </div>
+                        <!-- If we need pagination -->
+                        <div class="swiper-pagination"></div>
+                    </div>
+                    <!-- 上面是swiper组件 -->
+                    <span>社团信息:</span>
+                    <p style="color: black; font-size: 90%;">社团类别：{$vo.community_type}<br>
+                       成立时间：{$vo.create_time|date="y-m-d",###}<br>
+                       现任社长：{$vo.registered_name}<br>
+                    </p>
+
+                    <span>社团介绍:</span>
+                    <br/>{$vo.editorValue}
+                    <p><a href="#routers{$vo.community_id}" class="join-button">申请加入 </a></p>
+                </div>
+            </div>
+        </div>
+        {/volist}
+         {volist name="community" id="vo"}
+        
+        
+        <!--内联页结束  -->
+         <div class="page" id="routers{$vo.community_id}">
+            <!-- 判别用户是否登录 -->
+            {if condition="$user"}
+            <form action="{:url('index/applyjoincommunity')}" method="post">
+                <header class="bar bar-nav">
+                    <a class="button button-link button-nav pull-left back" href="">
+                        <span class="icon icon-left">
+                        </span>
+                        返回
+                    </a>
+                    <h1 class="title">
+                        申请加入
+                    </h1>
+                </header>
+                <div class="content">
+                    <div class="list-block">
+                        <ul>
+                            <!-- Text inputs -->
+                            <li class="align-top">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            我的特长
+                                        </div>
+                                        <div class="item-input">
+                                            <textarea name="join_specialty">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="align-top">
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            申请理由
+                                        </div>
+                                        <div class="item-input">
+                                            <textarea name="join_reason">
+                                            </textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="item-content">
+                                    <div class="item-inner">
+                                        <div class="item-title label">
+                                            验证码
+                                        </div>
+                                        <div class="item-input">
+                                            <input name="verifycode" placeholder="请输入验证码" type="text">
+                                                <div>
+                                                    {:captcha_img()}
+                                                </div>
+                                            </input>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="content-block">
+                        <div class="row">
+                            <div class="col-50">
+                                <a class="button button-big button-fill button-danger back" href="">
+                                    取消
+                                </a>
+                            </div>
+                            <input name="community_id" type="hidden" value="{$vo.community_id}">
+                            <button class="col-50 button button-big button-fill button-success" type="submit">
+                                提交
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            {else/}
+            <header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left back" href="">
+                <span class="icon icon-left">
+                </span>
+                返回
+            </a>
+            <h1 class="title">
+                申请社团
+            </h1>
+        </header>
+           
+            <!-- 用户没有登录返回提示登录界面 -->
+            <div class="content" id="waitingcontainer">
+        <div align="center" id="wait">
+            <!--这是内容块  -->
+            <div id="wait-inside">
+                <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                    <div calss="wait-line">
+                        您还没有登入
+                    </div>
+                    <div class="wait-line">
+                        点击<a href="{:url('index/login')}" class="external">登录</a>
+                    </div>
+
+                </img>
+            </div>
+        </div>
+    </div>
+            
+          {/if}
+        </div>
+        {/volist}
+    </div>
+    {include file="public/sidebar" /}
+
+{include file="public/footer" /}
+{include file="public/sidebarjs" /}
+</body>

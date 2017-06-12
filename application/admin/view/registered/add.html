@@ -1,0 +1,46 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>帐号管理-添加帐号</title>
+</head>
+
+<body>
+    <article class="page-container">
+        <form action="{:url('registered/save')}" method="post" class="form form-horizontal" id="form-admin-add">
+                <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>学号：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="" id="registered_id" name="registered_id">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>姓名：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="" id="registered_name" name="registered_name">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>密码：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="" id="registered_password" name="registered_password">
+                </div>
+            </div>
+            <div class="row cl">
+                <label class="form-label col-xs-4 col-sm-3"><span class="c-red">*</span>邮箱：</label>
+                <div class="formControls col-xs-8 col-sm-9">
+                    <input type="text" class="input-text" value="" placeholder="" id="registered_email" name="registered_email">
+                </div>
+            </div>
+            <div class="row cl">
+                <div class="col-xs-8 col-sm-9 col-xs-offset-4 col-sm-offset-2">
+                    <button type="submit" class="btn btn-success radius"><i class="icon-ok"></i> 确定</button>
+                    <button onClick="layer_close();" class="btn btn-default radius" type="button">取消</button>
+                </div>
+            </div>
+        </form>
+    </article>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--/_footer 作为公共模版分离出去-->
+</body>
+
+</html>

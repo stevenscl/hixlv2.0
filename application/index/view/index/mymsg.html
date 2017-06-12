@@ -1,0 +1,53 @@
+{include file="public/meta" /}
+<style type="text/css">
+    #waitingcontainer{
+        background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+</style>
+<body>
+<header class="bar bar-nav">
+            <a class="button button-link button-nav pull-left" href="{:url('index/news')}">
+                <span class="icon icon-left">
+                </span>
+                返回
+            </a>
+            <h1 class="title">
+                我的消息
+            </h1>
+        </header>
+        {if condition="$useraccount.registered_id"}
+        <div class="content">
+        {volist name="msg" id="vo"}
+        
+        <div class="card">
+    <div class="card-header">{$vo.msg_title}</div>
+    <div class="card-content">
+      <div class="card-content-inner">{$vo.msg_text}</div>
+    </div>
+    <div class="card-footer">{$vo.create_time|date="y-m-d h:i",###}</div>
+  </div>
+        
+        {/volist}
+        </div>
+        {else/}
+                              <!-- 用户没有登录返回提示登录界面 -->
+            <div class="content" id="waitingcontainer">
+        <div align="center" id="wait">
+            <!--这是内容块  -->
+            <div id="wait-inside">
+                <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                    <div calss="wait-line">
+                        您还没有登入
+                    </div>
+                    <div class="wait-line">
+                        点击<a href="{:url('index/login')}" class="external">登录</a>
+                    </div>
+
+                </img>
+            </div>
+        </div>
+    </div>
+        {/if}
+    </div>
+    </body>
+{include file="public/footer" /}

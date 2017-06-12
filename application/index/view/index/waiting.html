@@ -1,0 +1,44 @@
+{include file="public/meta" /}
+<style type="text/css">
+   #wait-inside{
+    margin:50% auto;
+   }
+    #wait-line{
+        margin-bottom:0.5rem;
+    }
+    #waitingcontainer{
+    	background-image: url(__STATIC__INDEX/img/waiting.png);
+    }
+  
+    #wait-logo{
+        width: 5rem;
+        height: 5rem;
+        margin-bottom: 2rem;
+       
+    }
+    
+    </style>
+    </head>
+<body>
+    <div class="content" id="waitingcontainer">
+        <div align="center" id="wait">
+            <!--这是内容块  -->
+            <div id="wait-inside">
+                <img id="wait-logo" src="__STATIC__INDEX/img/logo.png">
+                    <div calss="wait-line">
+                        欢迎来到小联2.0
+                    </div>
+                    {if $status}
+{$status.registered_status|registererinfo}
+{else/}
+                    <div class="wait-line">
+                        不存在该账户的注册申请信息
+                    </div>
+                    {/if}
+
+{include file="public/footer" /}
+                </img>
+            </div>
+        </div>
+    </div>
+</body>

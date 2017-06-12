@@ -1,0 +1,48 @@
+<script src="__STATIC__INDEX/js/zepto.js" type="text/javascript" charset="utf-8">
+</script>
+<script src="__STATIC__INDEX/js/swiper.jquery.min.js"></script>
+<script>
+
+    $(document).ready(function () {
+    //initialize swiper when document ready  
+    var mySwiper = new Swiper ('.swiper-container', {
+      // Optional parameters
+      speed: 400,
+    spaceBetween: 100,
+    autoplay:2000,
+    pagination:'.swiper-pagination'
+    })        
+  });
+
+
+//ptrContent  我们想要重置的下拉刷新页面的HTML元素或CSS选择器
+     $.config = {
+    autoInit: true,
+    swipePanelOnlyClose:false
+  }
+   
+//打开自动初始化页面的功能
+  //建议不要打开自动初始化，而是自己调用 $.init 方法完成初始化
+// Test via a getter in the options object to see 
+// if the passive property is accessed
+// var supportsPassive = false;
+// try {
+//   var opts = Object.defineProperty({}, 'passive', {
+//     get: function() {
+//       supportsPassive = true;
+//     }
+//   });
+//   window.addEventListener("test", null, opts);
+// } catch (e) {}
+
+// Use our detect's results. 
+// passive applied if supported, capture will be false either way.
+
+
+</script>
+<script charset="utf-8" src="__STATIC__INDEX/js/sm.min.js" type="text/javascript">
+</script>
+<script charset="utf-8" src="__STATIC__INDEX/js/sm-extend.min.js" type="text/javascript">
+</script>
+<script src="__STATIC__INDEX/js/iconfont.js" type="text/javascript">
+</script>

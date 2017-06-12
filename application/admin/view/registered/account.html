@@ -1,0 +1,126 @@
+<!--包含头部信息文件-->
+{include file="public/meta" /}
+<title>
+    帐号管理
+</title>
+<body>
+    <nav class="breadcrumb">
+        <i class="Hui-iconfont">
+            
+        </i>
+        首页
+        <span class="c-gray en">
+            >
+        </span>
+        用户管理
+        <span class="c-gray en">
+            >
+        </span>
+        帐号管理
+        <a class="btn btn-success radius r" href="javascript:location.replace(location.href);" style="line-height:1.6em;margin-top:3px" title="刷新">
+            <i class="Hui-iconfont">
+                
+            </i>
+        </a>
+    </nav>
+    <div class="page-container">
+        <div class="cl pd-5 bg-1 bk-gray">
+            <span class="l">
+                <a class="btn btn-primary radius" href="javascript:;" onclick="add('添加帐号','{:url('registered/add')}','','350')">
+                    <i class="Hui-iconfont">
+                        
+                    </i>
+                    添加账号
+                </a>
+            </span>
+            <span class="r">
+                共有数据：
+                <strong>
+                    {$count}
+                </strong>
+                条
+            </span>
+        </div>
+        <div class="mt-20">
+            <table class="table table-border table-bordered table-bg table-hover table-sort">
+                <thead>
+                    <tr class="text-c">
+                        <th width="100">
+                            <input name="" type="checkbox" value="">
+                            </input>
+                        </th>
+                        <th width="200">
+                            学号
+                        </th>
+                        <th width="200">
+                            姓名
+                        </th>
+                        <th width="200">
+                            密码
+                        </th>
+                        <th width="200">
+                            邮箱
+                        </th>
+                        <th width="100">
+                            操作
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                {volist name="registered" id="vo"}
+                    <tr class="text-c">
+                        <td>
+                            <input name="" type="checkbox" value="">
+                            </input>
+                        </td>
+                        <td>
+                            <a class="maincolor" href="javascript:;" onClick="edit('帐号信息','{:url('common/user',['id'=>$vo.registered_id])}','','')" >{$vo.registered_id}</a>
+                        </td>
+                        <td>
+                            {$vo.registered_name}
+                        </td>
+                        <td>
+                            {$vo.registered_password}
+                        </td>
+                        <td>
+                            {$vo.registered_email}
+                        </td>
+                        <td class="f-14 td-manage">
+                            <a href="javascript:;" onclick="edit('资讯编辑','{:url('registered/edit',['id'=>$vo.registered_id])}','','')" style="text-decoration:none" title="编辑">
+                                <i class="Hui-iconfont">
+                                    
+                                </i>
+                            </a>
+                            <a class="ml-5" href="javascript:;" onclick="del('{:url('registered/del',['id'=>$vo.registered_id])}')" style="text-decoration:none" title="删除">
+                                <i class="Hui-iconfont">
+                                    
+                                </i>
+                            </a>
+                        </td>
+                    </tr>
+                {/volist}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!--包含脚部信息文件-->
+    {include file="public/footer" /}
+    <!--请在下方写此页面业务相关的脚本-->
+    <script src="__STATIC__ADMIN/hui/lib/datatables/1.10.0/jquery.dataTables.min.js" type="text/javascript">
+    </script>
+    <script type="text/javascript">
+        $('.table-sort').dataTable({
+        "aaSorting": [
+            [1, "desc"]
+        ], //默认第几个排序
+        "bStateSave": true, //状态保存
+        "aoColumnDefs": [
+            //{"bVisible": false, "aTargets": [ 3 ]} //控制列的隐藏显示
+            {
+                "orderable": false,
+                "aTargets": [0,2,3,4,5]
+            } // 不参与排序的列
+        ]
+    });
+    </script>
+</body>
